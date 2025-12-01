@@ -39,21 +39,21 @@ const Index = () => {
             Color Selector
           </h1>
           <p className="text-muted-foreground text-lg">
-            Pick your emerald and ruby colors
+            Choose the color that you think best matches this word.
           </p>
         </div>
 
         {/* Color Pickers */}
         <div className="grid md:grid-cols-2 gap-8">
           {/* Emerald Column */}
-          <Card className="p-8 space-y-6 bg-emerald-light border-emerald/20">
-            <h2 className="text-3xl font-bold text-center tracking-wider text-emerald">
+          <Card className="p-8 space-y-6">
+            <h2 className="text-3xl font-bold text-center tracking-wider">
               EMERALD
             </h2>
             <div className="space-y-4">
               <div className="flex justify-center">
                 <div
-                  className="w-32 h-32 rounded-lg border-4 border-emerald shadow-lg"
+                  className="w-32 h-32 rounded-lg border-4 border-border shadow-lg"
                   style={{ backgroundColor: emeraldColor }}
                 />
               </div>
@@ -62,11 +62,11 @@ const Index = () => {
                   type="color"
                   value={emeraldColor}
                   onChange={(e) => setEmeraldColor(e.target.value)}
-                  className="w-full h-16 rounded-lg cursor-pointer border-2 border-emerald"
+                  className="w-full h-16 rounded-lg cursor-pointer border-2 border-border"
                 />
                 <button
                   onClick={() => addColor(emeraldColor, "emerald")}
-                  className="w-full bg-emerald text-white py-3 rounded-lg font-semibold hover:opacity-90 transition-opacity"
+                  className="w-full bg-primary text-primary-foreground py-3 rounded-lg font-semibold hover:opacity-90 transition-opacity"
                 >
                   Add to Gallery
                 </button>
@@ -75,14 +75,14 @@ const Index = () => {
           </Card>
 
           {/* Ruby Column */}
-          <Card className="p-8 space-y-6 bg-ruby-light border-ruby/20">
-            <h2 className="text-3xl font-bold text-center tracking-wider text-ruby">
+          <Card className="p-8 space-y-6">
+            <h2 className="text-3xl font-bold text-center tracking-wider">
               RUBY
             </h2>
             <div className="space-y-4">
               <div className="flex justify-center">
                 <div
-                  className="w-32 h-32 rounded-lg border-4 border-ruby shadow-lg"
+                  className="w-32 h-32 rounded-lg border-4 border-border shadow-lg"
                   style={{ backgroundColor: rubyColor }}
                 />
               </div>
@@ -91,11 +91,11 @@ const Index = () => {
                   type="color"
                   value={rubyColor}
                   onChange={(e) => setRubyColor(e.target.value)}
-                  className="w-full h-16 rounded-lg cursor-pointer border-2 border-ruby"
+                  className="w-full h-16 rounded-lg cursor-pointer border-2 border-border"
                 />
                 <button
                   onClick={() => addColor(rubyColor, "ruby")}
-                  className="w-full bg-ruby text-white py-3 rounded-lg font-semibold hover:opacity-90 transition-opacity"
+                  className="w-full bg-primary text-primary-foreground py-3 rounded-lg font-semibold hover:opacity-90 transition-opacity"
                 >
                   Add to Gallery
                 </button>
