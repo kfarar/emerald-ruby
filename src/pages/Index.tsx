@@ -141,25 +141,53 @@ const Index = () => {
             )}
           </div>
 
-          {colorHistory.length > 0 ? (
-            <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-12 gap-3">
-              {colorHistory.map((selection, index) => (
-                <div
-                  key={index}
-                  className="aspect-square rounded-lg shadow-md border-2 transition-transform hover:scale-110"
-                  style={{
-                    backgroundColor: selection.color,
-                    borderColor: selection.type === "emerald" ? "hsl(var(--emerald))" : "hsl(var(--ruby))",
-                  }}
-                  title={`${selection.type} - ${selection.color}`}
-                />
-              ))}
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* Emerald Gallery */}
+            <div className="space-y-4">
+              <h3 className="text-xl font-bold text-center">EMERALD</h3>
+              {colorHistory.filter(s => s.type === "emerald").length > 0 ? (
+                <div className="grid grid-cols-4 gap-3">
+                  {colorHistory
+                    .filter(selection => selection.type === "emerald")
+                    .map((selection, index) => (
+                      <div
+                        key={index}
+                        className="aspect-square rounded-lg shadow-md border-2 border-border transition-transform hover:scale-110"
+                        style={{ backgroundColor: selection.color }}
+                        title={`${selection.color}`}
+                      />
+                    ))}
+                </div>
+              ) : (
+                <Card className="p-8 text-center text-muted-foreground">
+                  No emerald colors selected yet
+                </Card>
+              )}
             </div>
-          ) : (
-            <Card className="p-12 text-center text-muted-foreground">
-              No colors selected yet. Pick a color above and add it to the gallery!
-            </Card>
-          )}
+
+            {/* Ruby Gallery */}
+            <div className="space-y-4">
+              <h3 className="text-xl font-bold text-center">RUBY</h3>
+              {colorHistory.filter(s => s.type === "ruby").length > 0 ? (
+                <div className="grid grid-cols-4 gap-3">
+                  {colorHistory
+                    .filter(selection => selection.type === "ruby")
+                    .map((selection, index) => (
+                      <div
+                        key={index}
+                        className="aspect-square rounded-lg shadow-md border-2 border-border transition-transform hover:scale-110"
+                        style={{ backgroundColor: selection.color }}
+                        title={`${selection.color}`}
+                      />
+                    ))}
+                </div>
+              ) : (
+                <Card className="p-8 text-center text-muted-foreground">
+                  No ruby colors selected yet
+                </Card>
+              )}
+            </div>
+          </div>
         </div>
       </div>
     </div>
