@@ -8,8 +8,8 @@ interface ColorSelection {
 }
 
 const Index = () => {
-  const [emeraldColor, setEmeraldColor] = useState("#10b981");
-  const [rubyColor, setRubyColor] = useState("#e11d48");
+  const [emeraldColor, setEmeraldColor] = useState("#808080");
+  const [rubyColor, setRubyColor] = useState("#808080");
   const [colorHistory, setColorHistory] = useState<ColorSelection[]>([]);
 
   useEffect(() => {
@@ -28,6 +28,11 @@ const Index = () => {
     const updated = [newSelection, ...colorHistory];
     setColorHistory(updated);
     localStorage.setItem("colorHistory", JSON.stringify(updated));
+  };
+
+  const clearHistory = () => {
+    setColorHistory([]);
+    localStorage.removeItem("colorHistory");
   };
 
   return (
@@ -53,9 +58,13 @@ const Index = () => {
             <div className="space-y-4">
               <div className="flex justify-center">
                 <div
-                  className="w-32 h-32 rounded-lg border-4 border-border shadow-lg"
+                  className="w-32 h-32 rounded-lg border-4 border-border shadow-lg flex items-center justify-center"
                   style={{ backgroundColor: emeraldColor }}
-                />
+                >
+                  <span className="text-sm font-mono font-semibold px-2 py-1 bg-background/80 rounded">
+                    {emeraldColor.toUpperCase()}
+                  </span>
+                </div>
               </div>
               <div className="flex flex-col items-center gap-3">
                 <label className="w-full relative cursor-pointer">
@@ -87,9 +96,13 @@ const Index = () => {
             <div className="space-y-4">
               <div className="flex justify-center">
                 <div
-                  className="w-32 h-32 rounded-lg border-4 border-border shadow-lg"
+                  className="w-32 h-32 rounded-lg border-4 border-border shadow-lg flex items-center justify-center"
                   style={{ backgroundColor: rubyColor }}
-                />
+                >
+                  <span className="text-sm font-mono font-semibold px-2 py-1 bg-background/80 rounded">
+                    {rubyColor.toUpperCase()}
+                  </span>
+                </div>
               </div>
               <div className="flex flex-col items-center gap-3">
                 <label className="w-full relative cursor-pointer">
@@ -116,11 +129,16 @@ const Index = () => {
 
         {/* Color History Gallery */}
         <div className="space-y-6">
-          <div className="text-center">
+          <div className="text-center space-y-4">
             <h2 className="text-2xl md:text-3xl font-bold">Color Gallery</h2>
-            <p className="text-muted-foreground">
-              {colorHistory.length} color{colorHistory.length !== 1 ? "s" : ""} selected
-            </p>
+            {colorHistory.length > 0 && (
+              <button
+                onClick={clearHistory}
+                className="bg-muted text-foreground py-2 px-6 rounded-lg font-semibold hover:bg-muted/80 transition-colors"
+              >
+                Clear Color Choices
+              </button>
+            )}
           </div>
 
           {colorHistory.length > 0 ? (
