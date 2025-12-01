@@ -58,15 +58,20 @@ const Index = () => {
                 />
               </div>
               <div className="flex flex-col items-center gap-3">
-                <input
-                  type="color"
-                  value={emeraldColor}
-                  onChange={(e) => setEmeraldColor(e.target.value)}
-                  className="w-full h-16 rounded-lg cursor-pointer border-2 border-border"
-                />
+                <label className="w-full relative cursor-pointer">
+                  <input
+                    type="color"
+                    value={emeraldColor}
+                    onChange={(e) => setEmeraldColor(e.target.value)}
+                    className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                  />
+                  <div className="w-full bg-foreground text-background py-3 rounded-lg font-semibold text-center hover:opacity-90 transition-opacity">
+                    Select Color
+                  </div>
+                </label>
                 <button
                   onClick={() => addColor(emeraldColor, "emerald")}
-                  className="w-full bg-primary text-primary-foreground py-3 rounded-lg font-semibold hover:opacity-90 transition-opacity"
+                  className="w-full bg-muted text-foreground py-3 rounded-lg font-semibold hover:bg-muted/80 transition-colors"
                 >
                   Add to Gallery
                 </button>
@@ -87,15 +92,20 @@ const Index = () => {
                 />
               </div>
               <div className="flex flex-col items-center gap-3">
-                <input
-                  type="color"
-                  value={rubyColor}
-                  onChange={(e) => setRubyColor(e.target.value)}
-                  className="w-full h-16 rounded-lg cursor-pointer border-2 border-border"
-                />
+                <label className="w-full relative cursor-pointer">
+                  <input
+                    type="color"
+                    value={rubyColor}
+                    onChange={(e) => setRubyColor(e.target.value)}
+                    className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                  />
+                  <div className="w-full bg-foreground text-background py-3 rounded-lg font-semibold text-center hover:opacity-90 transition-opacity">
+                    Select Color
+                  </div>
+                </label>
                 <button
                   onClick={() => addColor(rubyColor, "ruby")}
-                  className="w-full bg-primary text-primary-foreground py-3 rounded-lg font-semibold hover:opacity-90 transition-opacity"
+                  className="w-full bg-muted text-foreground py-3 rounded-lg font-semibold hover:bg-muted/80 transition-colors"
                 >
                   Add to Gallery
                 </button>
